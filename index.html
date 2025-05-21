@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfólio de desenvolvedor fullstack com serviços de desenvolvimento web, aplicativos e consultoria">
+  <title>Dev Fullstack - Soluções Tecnológicas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #2962FF;
+      --secondary-color: #0D47A1;
+      --accent-orange: #FF6D00;
+      --accent-green: #00C853;
+      --accent-purple: #AA00FF;
+      --text-light: #ffffff;
+      --text-dark: #212121;
+      --text-gray: #757575;
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      --border-radius: 12px;
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f5f5f5;
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .header {
+      background: var(--primary-color);
+      color: var(--text-light);
+      text-align: center;
+      padding: 18px 10px;
+      border-radius: var(--border-radius) var(--border-radius) 0 0;
+      font-weight: 700;
+      font-family: 'Roboto Mono', monospace;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .card {
+      background: var(--text-light);
+      border-radius: var(--border-radius);
+      margin: 20px 0;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      transition: var(--transition);
+      border-left: 4px solid transparent;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .card img {
+      width: 90px;
+      height: auto;
+      margin-left: 15px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .text {
+      flex: 1;
+    }
+
+    .text h2 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      font-weight: 600;
+      font-family: 'Roboto Mono', monospace;
+    }
+
+    .text p {
+      font-size: 0.9rem;
+      color: var(--text-gray);
+      margin-bottom: 12px;
+    }
+
+    .text a {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: var(--transition);
+      text-align: center;
+      font-family: 'Roboto Mono', monospace;
+    }
+
+    /* Card Color Variations */
+    .card-blue { 
+      background: var(--secondary-color); 
+      color: var(--text-light);
+      border-left-color: #82B1FF;
+    }
+    .card-blue .text p { color: rgba(255, 255, 255, 0.85); }
+    .card-blue a { 
+      background: #448AFF; 
+      color: var(--text-light);
+    }
+    .card-blue a:hover { background: #2979FF; }
+
+    .card-green { 
+      background: var(--accent-green); 
+      color: var(--text-light);
+      border-left-color: #69F0AE;
+    }
+    .card-green .text p { color: rgba(255, 255, 255, 0.85); }
+    .card-green a { 
+      background: #1B5E20; 
+      color: var(--text-light);
+    }
+    .card-green a:hover { background: #0D5302; }
+
+    .card-orange { 
+      background: var(--accent-orange); 
+      color: var(--text-light);
+      border-left-color: #FFAB40;
+    }
+    .card-orange .text p { color: rgba(255, 255, 255, 0.85); }
+    .card-orange a { 
+      background: #E65100; 
+      color: var(--text-light);
+    }
+    .card-orange a:hover { background: #BF360C; }
+
+    .card-purple { 
+      background: var(--accent-purple); 
+      color: var(--text-light);
+      border-left-color: #E254FF;
+    }
+    .card-purple .text p { color: rgba(255, 255, 255, 0.85); }
+    .card-purple a { 
+      background: #6A1B9A; 
+      color: var(--text-light);
+    }
+    .card-purple a:hover { background: #4A148C; }
+
+    /* Tech Badges */
+    .tech-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .tech-badge {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-family: 'Roboto Mono', monospace;
+    }
+
+    /* Accessibility Focus Styles */
+    a:focus {
+      outline: 2px solid var(--primary-color);
+      outline-offset: 2px;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 480px) {
+      .card-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .card img {
+        margin: 15px 0 0 0;
+        width: 80px;
+      }
+
+      .text a {
+        width: 100%;
+      }
+    }
+
+    /* Animation for better UX */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Nova animação para o header */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.header {
+  animation: slideDown 0.6s ease-out;
+}
+
+/* Botões com escala suave ao passar o mouse */
+.text a {
+  transform: scale(1);
+}
+.text a:hover {
+  transform: scale(1.05);
+}
+
+/* Imagens com pulso contínuo e sutil */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.card img {
+  animation: pulse 3s ease-in-out infinite;
+  transition: transform 0.3s ease;
+}
+
+/* Cards já possuem fadeIn, mas vamos aplicar individualmente com delay */
+.card {
+  opacity: 0;
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.card:nth-of-type(1) { animation-delay: 0.2s; }
+.card:nth-of-type(2) { animation-delay: 0.4s; }
+.card:nth-of-type(3) { animation-delay: 0.6s; }
+.card:nth-of-type(4) { animation-delay: 0.8s; }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header" role="banner">
+      <h1>Fullstack Developer</h1>
+    </header>
+
+    <main role="main">
+      <section class="card card-blue" role="region" aria-labelledby="services-title">
+        <div class="card-content">
+          <div class="text">
+            <h2 id="services-title">Serviços de Desenvolvimento</h2>
+            <p>Soluções completas para seu projeto digital, do frontend ao backend.</p>
+            <div class="tech-badges">
+              <span class="tech-badge">React</span>
+              <span class="tech-badge">Node.js</span>
+              <span class="tech-badge">Python</span>
+              <span class="tech-badge">SQL</span>
+            </div>
+            <a href="#" aria-label="Ver serviços de desenvolvimento">Ver Portfólio</a>
+          </div>
+          <img src="https://cdn-icons-png.flaticon.com/512/2282/2282188.png" alt="Ilustração de desenvolvimento web" loading="lazy">
+        </div>
+      </section>
+
+      <section class="card card-green" role="region" aria-labelledby="contact-title">
+        <div class="card-content">
+          <div class="text">
+            <h2 id="contact-title">Contato Profissional</h2>
+            <p>Vamos conversar sobre seu projeto ou oportunidade.</p>
+            <a href="https://wa.me/5591981918866" target="_blank" rel="noopener noreferrer" aria-label="Conversar no WhatsApp">WhatsApp</a>
+          </div>
+          <img src="https://cdn-icons-png.flaticon.com/512/3670/3670051.png" alt="Ícone de mensagem" loading="lazy">
+        </div>
+      </section>
+
+      <section class="card card-orange" role="region" aria-labelledby="github-title">
+        <div class="card-content">
+          <div class="text">
+            <h2 id="github-title">Meus Projetos Open Source</h2>
+            <p>Explore meu código e contribuições no GitHub.</p>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="Acessar perfil no GitHub">Ver GitHub</a>
+          </div>
+          <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="Logo do GitHub" loading="lazy">
+        </div>
+      </section>
+
+      <section class="card card-purple" role="region" aria-labelledby="linkedin-title">
+        <div class="card-content">
+          <div class="text">
+            <h2 id="linkedin-title">Perfil Profissional</h2>
+            <p>Conecte-se e veja minha experiência completa.</p>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="Acessar perfil no LinkedIn">Ver LinkedIn</a>
+          </div>
+          <img src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png" alt="Logo do LinkedIn" loading="lazy">
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html> 
