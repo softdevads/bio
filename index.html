@@ -4,297 +4,310 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Portfólio de desenvolvedor fullstack com serviços de desenvolvimento web, aplicativos e consultoria">
-  <title>Dev Fullstack - Soluções Tecnológicas</title>
+  <meta name="theme-color" content="#0f1724">
+  <meta name="author" content="Seu Nome">
+  <meta property="og:site_name" content="Seu Nome — Desenvolvedor Fullstack">
+  <meta property="og:title" content="Seu Nome — Desenvolvedor Fullstack">
+  <meta property="og:description" content="Portfólio de soluções web, aplicações e consultoria técnica.">
+  <meta property="og:image" content="/assets/og-image.png">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='100%25' height='100%25' fill='%232962FF' rx='4'/%3E%3Ctext x='12' y='16' font-size='12' text-anchor='middle' fill='white' font-family='Roboto, Arial'/%3E%3C/svg%3E">
+  <title>Seu Nome — Desenvolvedor Fullstack</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
+      /* Cores */
+      --bg: #0f1724; /* fundo escuro neutro */
+      --surface: rgba(255,255,255,0.04);
       --primary-color: #2962FF;
       --secondary-color: #0D47A1;
       --accent-orange: #FF6D00;
       --accent-green: #00C853;
       --accent-purple: #AA00FF;
+
+      /* Tipografia e espaçamento */
       --text-light: #ffffff;
-      --text-dark: #212121;
-      --text-gray: #757575;
-      --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      --muted: #9aa4b2;
+      --shadow: 0 6px 18px rgba(2,6,23,0.6);
       --border-radius: 12px;
-      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      --gap: 20px;
+      --transition: 200ms ease;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    /* Reset simples */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; }
     body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #0f0101;
-      color: var(--text-dark);
-      line-height: 1.6;
+      margin: 0;
+      font-family: 'Roboto', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: var(--bg);
+      color: var(--text-light);
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Skip link acessível */
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip-link:focus {
+      left: 16px;
+      top: 16px;
+      width: auto;
+      height: auto;
+      padding: 8px 12px;
+      background: var(--primary-color);
+      color: var(--text-light);
+      border-radius: 6px;
+      z-index: 9999;
     }
 
     .container {
-      max-width: 480px;
+      max-width: 980px; /* mais espaço em telas maiores */
       margin: 0 auto;
-      padding: 20px;
+      padding: 28px;
     }
 
     .header {
-      background: var(--primary-color);
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
       color: var(--text-light);
       text-align: center;
-      padding: 18px 10px;
+      padding: 22px 18px;
       border-radius: var(--border-radius) var(--border-radius) 0 0;
       font-weight: 700;
       font-family: 'Roboto Mono', monospace;
       letter-spacing: 1px;
-      margin-bottom: 24px;
+      margin-bottom: var(--gap);
       box-shadow: var(--shadow);
     }
 
+    .lead {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-top: 6px;
+      font-weight: 400;
+      font-family: system-ui;
+    }
+
+    /* Card base */
     .card {
-      background: var(--text-light);
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
       border-radius: var(--border-radius);
-      margin: 20px 0;
-      padding: 20px;
-      box-shadow: var(--shadow);
+      margin: 16px 0;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(2,6,23,0.45);
       display: flex;
+      gap: 16px;
       align-items: center;
-      transition: var(--transition);
+      transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
       border-left: 4px solid transparent;
+      opacity: 0;
+      transform: translateY(6px);
+      animation: fadeInUp 420ms var(--transition) forwards;
     }
 
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    }
+    @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+
+    .card:hover { transform: translateY(-6px); box-shadow: 0 14px 34px rgba(2,6,23,0.6); }
 
     .card-content {
       display: flex;
       justify-content: space-between;
       align-items: center;
       width: 100%;
+      gap: 18px;
     }
 
-    .card img {
-      width: 90px;
-      height: auto;
-      margin-left: 15px;
-      border-radius: 8px;
-      object-fit: cover;
+    .media img {
+      width: 96px;
+      height: 96px;
+      border-radius: 10px;
+      object-fit: contain;
+      background: rgba(255,255,255,0.02);
+      transition: transform var(--transition);
     }
+    .media img:hover { transform: scale(1.03); }
 
-    .text {
-      flex: 1;
-    }
+    .text { flex: 1; min-width: 0; }
 
     .text h2 {
-      font-size: 1.1rem;
-      margin-bottom: 8px;
+      font-size: 1.05rem;
+      margin-bottom: 6px;
       font-weight: 600;
       font-family: 'Roboto Mono', monospace;
     }
 
-    .text p {
-      font-size: 0.9rem;
-      color: var(--text-gray);
-      margin-bottom: 12px;
-    }
+    .text p { font-size: 0.95rem; color: var(--muted); margin-bottom: 12px; }
 
-    .text a {
-      display: inline-block;
-      padding: 8px 16px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 500;
-      transition: var(--transition);
-      text-align: center;
+    .tech-badges { display:flex; flex-wrap:wrap; gap:8px; margin-top:6px; }
+    .tech-badge { background: rgba(255,255,255,0.03); padding:6px 10px; border-radius:999px; font-size:0.75rem; color:var(--text-light); }
+
+    /* Botões (classe .btn) */
+    .btn {
+      display:inline-block;
+      padding:8px 14px;
+      border-radius:8px;
+      text-decoration:none;
+      font-weight:600;
       font-family: 'Roboto Mono', monospace;
+      font-size:0.86rem;
+      transition: transform var(--transition), background-color var(--transition);
+      border: 2px solid transparent;
+    }
+    .btn:focus { outline: none; box-shadow: 0 0 0 3px rgba(41,98,255,0.18); }
+
+    /* Card color variants */
+    .card-blue { border-left-color: rgba(130,177,255,0.9); }
+    .card-blue .btn { background: rgba(68,138,255,0.12); color: var(--text-light); border-color: rgba(68,138,255,0.18); }
+    .card-blue .btn:hover { background: rgba(68,138,255,0.18); }
+
+    .card-green .btn { background: rgba(0,200,83,0.12); color: var(--text-light); border-color: rgba(0,200,83,0.12); }
+    .card-green .btn:hover { background: rgba(0,200,83,0.18); }
+
+    .card-orange .btn { background: rgba(255,109,0,0.12); color: var(--text-light); border-color: rgba(255,109,0,0.12); }
+    .card-orange .btn:hover { background: rgba(255,109,0,0.18); }
+
+    .card-purple .btn { background: rgba(170,0,255,0.12); color: var(--text-light); border-color: rgba(170,0,255,0.12); }
+    .card-purple .btn:hover { background: rgba(170,0,255,0.18); }
+
+    /* Responsividade */
+    @media (max-width: 720px) {
+      .card { flex-direction: column; align-items: flex-start; }
+      .media img { width: 84px; height: 84px; }
+      .container { padding: 18px; }
     }
 
-    /* Card Color Variations */
-    .card-blue { 
-      background: var(--secondary-color); 
-      color: var(--text-light);
-      border-left-color: #82B1FF;
-    }
-    .card-blue .text p { color: rgba(255, 255, 255, 0.85); }
-    .card-blue a { 
-      background: #448AFF; 
-      color: var(--text-light);
-    }
-    .card-blue a:hover { background: #2979FF; }
-
-    .card-green { 
-      background: var(--accent-green); 
-      color: var(--text-light);
-      border-left-color: #69F0AE;
-    }
-    .card-green .text p { color: rgba(255, 255, 255, 0.85); }
-    .card-green a { 
-      background: #1B5E20; 
-      color: var(--text-light);
-    }
-    .card-green a:hover { background: #0D5302; }
-
-    .card-orange { 
-      background: var(--accent-orange); 
-      color: var(--text-light);
-      border-left-color: #FFAB40;
-    }
-    .card-orange .text p { color: rgba(255, 255, 255, 0.85); }
-    .card-orange a { 
-      background: #E65100; 
-      color: var(--text-light);
-    }
-    .card-orange a:hover { background: #BF360C; }
-
-    .card-purple { 
-      background: var(--accent-purple); 
-      color: var(--text-light);
-      border-left-color: #E254FF;
-    }
-    .card-purple .text p { color: rgba(255, 255, 255, 0.85); }
-    .card-purple a { 
-      background: #6A1B9A; 
-      color: var(--text-light);
-    }
-    .card-purple a:hover { background: #4A148C; }
-
-    /* Tech Badges */
-    .tech-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 10px;
+    @media (prefers-reduced-motion: reduce) {
+      :root { --transition: 0ms; }
+      * { animation: none !important; transition: none !important; }
     }
 
-    .tech-badge {
-      background: rgba(255, 255, 255, 0.15);
-      padding: 3px 8px;
-      border-radius: 4px;
-      font-size: 0.7rem;
-      font-family: 'Roboto Mono', monospace;
+    /* Pequenas melhorias de contraste para textos dentro de cards coloridos */
+    .card-blue .text p, .card-green .text p, .card-orange .text p, .card-purple .text p { color: rgba(255,255,255,0.9); }
+
+    /* Delays para animação sequencial */
+    .card:nth-of-type(1) { animation-delay: 0.08s; }
+    .card:nth-of-type(2) { animation-delay: 0.16s; }
+    .card:nth-of-type(3) { animation-delay: 0.24s; }
+    .card:nth-of-type(4) { animation-delay: 0.32s; }
+
+    /* Navegação */
+    .nav { display:block; margin-bottom: 12px; }
+    .nav-inner { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+    .brand { color:var(--text-light); text-decoration:none; font-weight:700; }
+    .nav-actions { display:flex; gap:12px; align-items:center; }
+    .nav-link { color:var(--muted); text-decoration:none; font-size:0.9rem; }
+
+    /* Hero */
+    .header-hero { padding-bottom: 18px; }
+    .hero { display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .hero-content { max-width: 68%; }
+    .hero-title { font-size:1.6rem; margin:0 0 6px; }
+    .hero-sub { color:var(--muted); margin:0 0 12px; }
+    .hero-ctas { display:flex; gap:12px; }
+    .hero-media img { border-radius:999px; background:rgba(255,255,255,0.02); }
+
+    /* Botões variantes */
+    .btn-outline { background:transparent; border-color: rgba(255,255,255,0.08); }
+    .btn-ghost { background: transparent; color: var(--primary-color); border-color: transparent; }
+
+    /* Footer */
+    .footer { margin-top: 28px; padding: 18px; border-radius: 10px; background: rgba(255,255,255,0.02); box-shadow: 0 8px 18px rgba(2,6,23,0.45); }
+    .footer-inner { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:10px; }
+    .footer-link { color:var(--muted); text-decoration:none; margin-left:12px; }
+    .copyright { font-size:0.85rem; color:var(--muted); text-align:center; }
+    .small.muted { font-size:0.9rem; color:var(--muted); }
+
+    @media (max-width: 720px) {
+      .hero { flex-direction:column; align-items:flex-start; }
+      .hero-content { max-width:100%; }
+      .nav-inner { flex-direction:column; align-items:flex-start; gap:8px; }
+      .footer-inner { flex-direction:column; align-items:flex-start; }
     }
-
-    /* Accessibility Focus Styles */
-    a:focus {
-      outline: 2px solid var(--primary-color);
-      outline-offset: 2px;
-    }
-
-    /* Responsive Adjustments */
-    @media (max-width: 480px) {
-      .card-content {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .card img {
-        margin: 15px 0 0 0;
-        width: 80px;
-      }
-
-      .text a {
-        width: 100%;
-      }
-    }
-
-    /* Animation for better UX */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Nova animação para o header */
-@keyframes slideDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.header {
-  animation: slideDown 0.6s ease-out;
-}
-
-/* Botões com escala suave ao passar o mouse */
-.text a {
-  transform: scale(1);
-}
-.text a:hover {
-  transform: scale(1.05);
-}
-
-/* Imagens com pulso contínuo e sutil */
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-}
-
-.card img {
-  animation: pulse 3s ease-in-out infinite;
-  transition: transform 0.3s ease;
-}
-
-/* Cards já possuem fadeIn, mas vamos aplicar individualmente com delay */
-.card {
-  opacity: 0;
-  animation: fadeIn 0.6s ease-out forwards;
-}
-
-.card:nth-of-type(1) { animation-delay: 0.2s; }
-.card:nth-of-type(2) { animation-delay: 0.4s; }
-.card:nth-of-type(3) { animation-delay: 0.6s; }
-.card:nth-of-type(4) { animation-delay: 0.8s; }
 
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main">Pular para o conteúdo</a>
   <div class="container">
-    <header class="header" role="banner">
-      <h1>Fullstack Developer</h1>
+    <nav class="nav" role="navigation" aria-label="Navegação principal">
+      <div class="nav-inner">
+        <a class="brand" href="#"><strong>Seu Nome</strong></a>
+        <div class="nav-actions">
+          <a class="nav-link" href="mailto:seunome@exemplo.com">seunome@exemplo.com</a>
+          <a class="btn btn-outline" href="#" aria-label="Baixar CV">Baixar CV</a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="header header-hero" role="banner">
+      <div class="hero">
+        <div class="hero-content">
+          <h1 class="hero-title">Seu Nome</h1>
+          <p class="hero-sub">Desenvolvedor Fullstack — aplicações escaláveis com foco em performance, segurança e UX</p>
+          <div class="hero-ctas">
+            <a class="btn" href="#projects">Ver Portfólio</a>
+            <a class="btn btn-ghost" href="mailto:seunome@exemplo.com">Entrar em contato</a>
+          </div>
+        </div>
+        <div class="hero-media" aria-hidden="true">
+          <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Avatar" width="120" height="120">
+        </div>
+      </div>
+      <div class="lead">Crio soluções web e mobile com foco em desempenho e boas práticas de engenharia.</div>
     </header>
 
-    <main role="main">
-      <section class="card card-blue" role="region" aria-labelledby="services-title">
+    <main id="main" role="main">
+      <section id="services" class="card card-blue" role="region" aria-labelledby="services-title">
         <div class="card-content">
           <div class="text">
-            <h2 id="services-title">Serviços de Desenvolvimento</h2>
-            <p>Soluções completas para seu projeto digital, do frontend ao backend.</p>
-            <div class="tech-badges">
+            <h2 id="services-title">Serviços</h2>
+            <p>Aplicações sob medida, APIs escaláveis, consultoria em arquitetura e otimização de performance.</p>
+            <div class="tech-badges" aria-hidden="true">
               <span class="tech-badge">React</span>
               <span class="tech-badge">Node.js</span>
-              <span class="tech-badge">Python</span>
-              <span class="tech-badge">SQL</span>
+              <span class="tech-badge">TypeScript</span>
+              <span class="tech-badge">Postgres</span>
             </div>
-            <a href="#" aria-label="Ver serviços de desenvolvimento">Ver Portfólio</a>
+            <a class="btn" href="#projects" aria-label="Ver serviços e projetos">Portfólio</a>
           </div>
-          <img src="https://cdn-icons-png.flaticon.com/512/2282/2282188.png" alt="Ilustração de desenvolvimento web" loading="lazy">
+          <figure class="media" aria-hidden="true">
+            <img src="https://cdn-icons-png.flaticon.com/512/2282/2282188.png" alt="Ilustração representando desenvolvimento web" loading="lazy" width="96" height="96">
+          </figure>
         </div>
       </section>
 
-      <section class="card card-green" role="region" aria-labelledby="contact-title">
+      <section id="contact" class="card card-green" role="region" aria-labelledby="contact-title">
         <div class="card-content">
           <div class="text">
-            <h2 id="contact-title">Contato Profissional</h2>
-            <p>Vamos conversar sobre seu projeto ou oportunidade.</p>
-            <a href="https://wa.me/5591981918866" target="_blank" rel="noopener noreferrer" aria-label="Conversar no WhatsApp">WhatsApp</a>
+            <h2 id="contact-title">Contato</h2>
+            <p>Disponível para projetos e consultoria. Atendimento por e-mail ou WhatsApp.</p>
+            <a class="btn" href="mailto:seunome@exemplo.com" aria-label="Enviar email">Enviar e-mail</a>
+            <a class="btn" href="https://wa.me/5591981918866" target="_blank" rel="noopener noreferrer" aria-label="Conversar no WhatsApp">WhatsApp</a>
           </div>
-          <img src="https://cdn-icons-png.flaticon.com/512/3670/3670051.png" alt="Ícone de mensagem" loading="lazy">
+          <figure class="media" aria-hidden="true">
+            <img src="https://cdn-icons-png.flaticon.com/512/3670/3670051.png" alt="Ícone de mensagem" loading="lazy" width="96" height="96">
+          </figure>
         </div>
       </section>
 
-      <section class="card card-orange" role="region" aria-labelledby="github-title">
+      <section id="projects" class="card card-orange" role="region" aria-labelledby="github-title">
         <div class="card-content">
           <div class="text">
-            <h2 id="github-title">Meus Projetos Open Source</h2>
-            <p>Explore meu código e contribuições no GitHub.</p>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="Acessar perfil no GitHub">Ver GitHub</a>
+            <h2 id="github-title">Projetos</h2>
+            <p>Destaques: CLI de deploy, dashboard analítico e serviço de autenticação simples.</p>
+            <a class="btn" href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="Acessar perfil no GitHub">GitHub</a>
           </div>
-          <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="Logo do GitHub" loading="lazy">
+          <figure class="media" aria-hidden="true">
+            <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="Logo do GitHub" loading="lazy" width="96" height="96">
+          </figure>
         </div>
       </section>
 
@@ -302,13 +315,35 @@
         <div class="card-content">
           <div class="text">
             <h2 id="linkedin-title">Perfil Profissional</h2>
-            <p>Conecte-se e veja minha experiência completa.</p>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="Acessar perfil no LinkedIn">Ver LinkedIn</a>
+            <p>Conecte-se para ver histórico de projetos, recomendações e detalhes do meu trabalho.</p>
+            <a class="btn" href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="Acessar perfil no LinkedIn">LinkedIn</a>
           </div>
-          <img src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png" alt="Logo do LinkedIn" loading="lazy">
+          <figure class="media" aria-hidden="true">
+            <img src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png" alt="Logo do LinkedIn" loading="lazy" width="96" height="96">
+          </figure>
         </div>
-      </section>
+      </section> 
     </main>
+
+    <footer class="footer" role="contentinfo">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <strong>Seu Nome</strong>
+          <div class="small muted">Desenvolvedor Fullstack • São Paulo, BR</div>
+        </div>
+        <div class="footer-right">
+          <a class="footer-link" href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a class="footer-link" href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="footer-link" href="mailto:seunome@exemplo.com">E-mail</a>
+        </div>
+      </div>
+      <div class="copyright">© <span id="year"></span> Seu Nome. Todos os direitos reservados.</div>
+    </footer>
   </div>
+
+  <script>
+    // Atualiza ano automaticamente
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
-</html> 
+</html>
